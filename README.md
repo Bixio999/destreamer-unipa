@@ -1,24 +1,22 @@
-# WARNING! REPOSITORY IN DEVELOPMENT
-**PLEASE DON'T USE THIS REPO AT THE MOMENT**
+# destreamer for UNIPA
 
-This fork is actually a test to understand if the [fork of Destreamer for University of Pisa](https://github.com/Guray00/destreamer-unipi) can be applied to the login page of University of Palermo.
+This fork is an adaption of the [fork of Destreamer for University of Pisa](https://github.com/Guray00/destreamer-unipi) that implements the autofill for UNIPA login interface. The 99% of the code is equal to UNIPI version, so you can easily follow the instructions below. Thanks them for their nice work!
+
+Enjoy!
 
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<hr /> 
 
-## destreamer-unipi README
+This fork allows people studying at the University of Palermo to download files and allow students to enter their private university profile directly, without inserting their personal data every time. 
 
-I made this fork to allow people studying at the university of Pisa to download files and allow students to enter their private university profile directly, without inserting their personal data every time. Unlike the main program, the access credentials to the UniPi authentication module must be saved in the program's directory in a "credentials.txt" file following this format (1 string per line):
+During the first run of the program, it will ask for your access credentials, and if you want to store them to automatically load for the next times. 
+
+If you agree, the access credentials to the UniPA authentication module are saved in the program's directory in a "credentials.txt" file following this format (1 string per line):
 ```
-yourUserWithout@studenti.unipi.it
+yourUserWithout@you.unipa.it
 yourMagicPassword
 ```
-***You are storing plaintext-credentials, therefore pay attention!*** _(i will fix that later, i promise...!)_					 
+***You are storing plaintext-credentials, therefore pay attention!*** 
 You can find the original work [here](https://github.com/snobu/destreamer), if you find any issues, please submit them to him.
 
 ### Little trick 
