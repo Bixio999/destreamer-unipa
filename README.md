@@ -149,8 +149,8 @@ You need to rebuild (`npm run build`) every time you change this configuration.
 To build destreamer clone this repository, install dependencies and run the build script -
 
 ```sh
-$ git clone https://github.com/guray00/destreamer-UniPi
-$ cd ./destreamer-unipi
+$ git clone https://github.com/Bixio999/destreamer-unipa
+$ cd ./destreamer-unipa
 $ npm install
 $ npm run build
 ```
