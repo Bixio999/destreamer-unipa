@@ -154,12 +154,7 @@ $ cd ./destreamer-unipi
 $ npm install
 $ npm run build
 ```
-Then create in the program root folder the credentials.txt file with at the first line the username and in the second one the password.
-```
-yourUserWithout@studenti.unipi.it
-yourMagicPassword
-```
-***You are storing plaintext-credentials, therefore pay attention!***
+
 
 ## Usage
 

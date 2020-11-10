@@ -122,7 +122,7 @@ async function DoInteractiveLogin(url: string, username?: string): Promise<Sessi
 
     const browser: puppeteer.Browser = await puppeteer.launch({
         executablePath: getPuppeteerChromiumPath(),
-        headless: false,	//unipa: no need to show the window now, software asks in the shell
+        headless: true,	//unipa: no need to show the window now, software asks in the shell
         userDataDir: (argv.keepLoginCookies) ? chromeCacheFolder : undefined,
         args: [
             '--disable-dev-shm-usage',
