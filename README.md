@@ -1,4 +1,18 @@
-# WAIT! It's an University of Pisa Fork!
+# WARNING! REPOSITORY IN DEVELOPMENT
+**PLEASE DON'T USE THIS REPO AT THE MOMENT**
+
+This fork is actually a test to understand if the [fork of Destreamer for University of Pisa](https://github.com/Guray00/destreamer-unipi) can be applied to the login page of University of Palermo.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## destreamer-unipi README
+
 I made this fork to allow people studying at the university of Pisa to download files and allow students to enter their private university profile directly, without inserting their personal data every time. Unlike the main program, the access credentials to the UniPi authentication module must be saved in the program's directory in a "credentials.txt" file following this format (1 string per line):
 ```
 yourUserWithout@studenti.unipi.it
