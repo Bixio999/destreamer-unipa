@@ -44,7 +44,7 @@ async function init(): Promise<void> {
     }
 }
 
-async function askUnipiCredentaials() {
+async function askUnipaCredentaials() {
     const rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout,
@@ -57,9 +57,9 @@ async function askUnipiCredentaials() {
         });
     };
     
-    console.log("Plese provide your UNIPI credentials")
-    const unipi_usr = await questionAsync("Username: ");
-    const unipi_psw = await questionAsync("Password: ");
+    console.log("Plese provide your UNIPA credentials")
+    const unipa_usr = await questionAsync("Username: ");
+    const unipa_psw = await questionAsync("Password: ");
     
     let save_cred_asw = "";
     while (!save_cred_asw.startsWith("y") && !save_cred_asw.startsWith("n")) {
@@ -68,10 +68,10 @@ async function askUnipiCredentaials() {
     }
     const save_credentials = (save_cred_asw.startsWith("y")) ? true : false;
     
-    return { unipi_usr, unipi_psw, save_credentials };
+    return { unipa_usr, unipa_psw, save_credentials };
 }
 
-async function getUnipiCredentials() {
+async function getUnipaCredentials() {
     const credentials_path = "credentials.txt";
     let file_exists:boolean;
     try {
@@ -84,23 +84,23 @@ async function getUnipiCredentials() {
     // Reading from credentials.txt if file exists
     if (file_exists) {
         const contents = await fs.promises.readFile(credentials_path, 'utf8');
-        const unipi_usr = contents.split("\n")[0];
-        const unipi_psw = contents.split("\n")[1];
+        const unipa_usr = contents.split("\n")[0];
+        const unipa_psw = contents.split("\n")[1];
 
-        return { unipi_usr, unipi_psw };
+        return { unipa_usr, unipa_psw };
     }
 
     // Get credentials from console input
-    const credentials = await askUnipiCredentaials();
+    const credentials = await askUnipaCredentaials();
     if (credentials.save_credentials) {
         // Saving credentials to file
-        const data = credentials.unipi_usr + "\n" + credentials.unipi_psw;
+        const data = credentials.unipa_usr + "\n" + credentials.unipa_psw;
         fs.promises.writeFile(credentials_path, data, 'utf8');
     }
 
     return {
-        unipi_usr: credentials.unipi_usr,
-        unipi_psw: credentials.unipi_psw
+        unipa_usr: credentials.unipa_usr,
+        unipa_psw: credentials.unipa_psw
     };
 }
 
@@ -108,13 +108,13 @@ async function getUnipiCredentials() {
 async function DoInteractiveLogin(url: string, username?: string): Promise<Session> {
     //const videoId = url.split('/').pop(); //?? process.exit(ERROR_CODE.INVALID_VIDEO_ID);
     
-    //*********************************************  ADDING UNIPI CREDENTIALS
-    const credentials = await getUnipiCredentials();
-    let unipi_usr:string = credentials.unipi_usr;
-    let unipi_psw:string = credentials.unipi_psw;
+    //*********************************************  ADDING UNIPA CREDENTIALS
+    const credentials = await getUnipaCredentials();
+    let unipa_usr:string = credentials.unipa_usr;
+    let unipa_psw:string = credentials.unipa_psw;
 	
     if (!username){
-    	username = "no_need_to_change@studenti.unipi.it"	
+    	username = "no_need_to_change@you.unipa.it"	
     }
     //*********************************************
 
@@ -122,7 +122,7 @@ async function DoInteractiveLogin(url: string, username?: string): Promise<Sessi
 
     const browser: puppeteer.Browser = await puppeteer.launch({
         executablePath: getPuppeteerChromiumPath(),
-        headless: true,	//unipi: no need to show the window now, software asks in the shell
+        headless: false,	//unipa: no need to show the window now, software asks in the shell
         userDataDir: (argv.keepLoginCookies) ? chromeCacheFolder : undefined,
         args: [
             '--disable-dev-shm-usage',
@@ -140,11 +140,11 @@ async function DoInteractiveLogin(url: string, username?: string): Promise<Sessi
         await page.keyboard.type(username);
         await page.click('input[type="submit"]');
         
-        //********************* HANDLING UNIPI PAGE
+        //********************* HANDLING UNIPA PAGE
         await page.waitForSelector('input[type="text"]');
-        await page.type('input[type="text"]', unipi_usr.replace("@studenti.unipi.it","")); // per il login non serve la mail
-        await page.type('input[type="password"]', unipi_psw);
-        await page.click('button[type="submit"]');
+        await page.type('input[type="text"]', unipa_usr.replace("@you.unipa.it","")); // per il login non serve la mail
+        await page.type('input[type="password"]', unipa_psw);
+        await page.click('input[type="submit"]');
         
         await page.waitForSelector('input[type="submit"]');
         await page.click('input[type="submit"]');
