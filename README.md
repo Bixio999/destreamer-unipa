@@ -1,6 +1,6 @@
 # destreamer for UNIPA
 
-This fork is an adaption of the [fork of Destreamer for University of Pisa](https://github.com/Guray00/destreamer-unipi) that implements the autofill for UNIPA login interface. The 99% of the code is equal to UNIPI version, so you can easily follow the instructions below. Thanks them for their nice work!
+This fork is an adaption of the [fork of Destreamer for University of Pisa](https://github.com/Guray00/destreamer-unipi) that implements the autofill for UNIPA login interface. The 99% of the code is equal to UNIPI version, so you can easily follow the instructions below. Thank them for their nice work!
 
 Enjoy!
 
